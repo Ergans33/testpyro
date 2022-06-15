@@ -7,7 +7,7 @@ from pyrogram.types import Message
 from main import CMD_HELP
 from helpers.utility import split_list
 
-heading = "──「 **{0}** 」──\n"
+heading = "🖕🏽 **{0}** 🖕🏽\n"
 
 
 @Client.on_message(filters.command("help", ".") & filters.me)
@@ -25,7 +25,7 @@ async def module_help(client: Client, message: Message):
 
         ac = PrettyTable()
         ac.header = False
-        ac.title = "UserBot Modules"
+        ac.title = "Peler UserBot Modules"
         ac.align = "l"
 
         for x in split_list(sorted(CMD_HELP.keys()), 2):
@@ -40,7 +40,7 @@ async def module_help(client: Client, message: Message):
             this_command += heading.format(str(help_arg)).upper()
 
             for x in commands:
-                this_command += f"-> `{str(x)}`\n```{str(commands[x])}```\n"
+                this_command += f"¤ `{str(x)}`\n```{str(commands[x])}```\n"
 
             await message.edit(this_command, parse_mode="markdown")
         else:
