@@ -20,7 +20,7 @@ async def gikes(c: Client, m: Message):
     async for dialog in c.iter_dialogs():
         if dialog.chat.type in ["group", "supergroup"]:
             chat_id = dialog.chat.id
-          try:
+            try:
                 await c.send_message(chat_id, text)
                 done_broadcast += 1
                 await asyncio.sleep(0.1)
