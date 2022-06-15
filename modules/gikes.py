@@ -3,10 +3,10 @@ from pyrogram import Client, filters
 from pyrogram.types import Dialog, Chat, Message
 from pyrogram.errors import UserAlreadyParticipant
 from helpers.clientbot import client as hero
+from helpers.command import commandpro
 from config import SUDO_USERS
-from modules.help import add_command_help
 
-@Client.on_message(filters.command([".gcast", ".cast", "/gcast", "/cast", "!gcast", "!cast"]) & filters.me)
+@Client.on_message(commandpro([".gcast", ".cast", "/gcast", "/cast", "!gcast", "!cast"]))
 async def broadcast(_, message: Message):
     sent=0
     failed=0
