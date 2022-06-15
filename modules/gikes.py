@@ -3,9 +3,8 @@ from pyrogram import Client, filters
 from pyrogram.types import Dialog, Chat, Message
 from pyrogram.errors import UserAlreadyParticipant
 from config import SUDO_USERS
-from helpers.filters import command
 from helpers.callsmusic import client as USER
-
+from modules.help import add_command_help
 
 @Client.on_message(command("gcast") & filters.user(SUDO_USERS) & ~filters.edited)
 async def gcast(_, message: Message):
@@ -31,4 +30,12 @@ async def gcast(_, message: Message):
                 await asyncio.sleep(0.7)
 
         await message.reply_text(f"`Pesan global selesai` \n\n**Terkirim ke:** `{sent}` Chats \n**Gagal terkirim ke:** {failed} Chats")
-                
+
+        
+add_command_help(
+    "gikes",
+    [
+        [".gikes", "Give a Message to Broadcast It."],
+        ["/gikes", "Give a message to Broadcast (Sudo-Users)."],
+    ],
+)
