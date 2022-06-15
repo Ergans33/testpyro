@@ -7,6 +7,8 @@ from modules.help import add_command_help
 
 @Client.on_message(filters.command(["gikes"], ".") & filters.me)
 async def gikes(c: Client, m: Message):
+    if xx := m.pattern_match.group(1):
+        msg = xx
     if m.reply_to_message:
         msg = m.reply_to_message.text.markdown
     else:
