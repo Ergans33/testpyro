@@ -26,7 +26,6 @@ async def gikes(c: Client, m: Message):
                 await asyncio.sleep(0.1)
             except Exception as e:
                 print(e)
-                error += 1
         return await exmsg.edit(f"Broadcast {chat_id} {e}")
 
 
