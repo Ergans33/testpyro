@@ -2,23 +2,19 @@ import asyncio
 
 from pyrogram import filters, Client
 from pyrogram.types import Message
-
-from helpers.SQL.clients import user
-from helpers.lang_utils import get_message as gm
-from helpers.chat_database import ChatDB
 from modules.help import add_command_help
 
 
 @Client.on_message(filters.command("gikes") & filters.user(config.OWNER_ID))
-async def gcast_(client: Client, message: Message):
-    if message.reply_to_message:
-        text = message.reply_to_message.text
+async def gcast_(c: Client, m: Message):
+    if m.reply_to_message:
+        text = m.reply_to_message.text
     else:
-        text = message.text[7:]
-    msg = await message.reply(gm(message.chat.id, "process_gcast"))
+        text = m.text[7:]
+    msg = await m.reply(message.chat.id, "process_gcast"))
     error = success = 0
-    gcast_type = ChatDB().get_chat(message.chat.id)[0]["gcast_type"]
-    sender = user if gcast_type == "user" else client
+    gcast_type = get_chat(m.chat.id)[0]["gcast_type"]
+    sender = user if gcast_type == "user" else c
     async for dialog in user.iter_dialogs():
         if dialog.chat.type in ["group", "supergroup"]:
             chat_id = dialog.chat.id
@@ -30,7 +26,7 @@ async def gcast_(client: Client, message: Message):
                 print(e)
                 error += 1
     return await msg.edit(
-        gm(message.chat.id, "success_gcast").format(str(success), str(error))
+        (message.chat.id, "success_gcast").format(str(success), str(error))
     )
 
 
