@@ -1,7 +1,7 @@
 from gpytranslate import Translator
 from pyrogram import filters, Client
 from pyrogram.types import Message
-from handlers.help import *
+from modules.help import *
 
 trl = Translator()
 
