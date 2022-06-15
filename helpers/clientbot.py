@@ -14,49 +14,49 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
                     level=logging.WARNING)
 
 
-client = Bot(STRING_SESSION, API_ID, API_HASH, plugins=dict(root="plugins"))
+client = Bot(STRING_SESSION1, API_ID, API_HASH, plugins=dict(root="plugins"))
 
 if STRING_SESSION1:
-    client1 = Bot(STRING_SESSION1, API_ID, API_HASH, plugins=dict(root="plugins"))
+    client1 = Bot(STRING_SESSION2, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client1 = None
 
 if STRING_SESSION2:
-    client2 = Bot(STRING_SESSION2, API_ID, API_HASH, plugins=dict(root="plugins"))
+    client2 = Bot(STRING_SESSION3, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client2 = None
 
 if STRING_SESSION3:
-    client3 = Bot(STRING_SESSION3, API_ID, API_HASH, plugins=dict(root="plugins"))
+    client3 = Bot(STRING_SESSION4, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client3 = None
 
 if STRING_SESSION4:
-    client4 = Bot(STRING_SESSION4, API_ID, API_HASH, plugins=dict(root="plugins"))
+    client4 = Bot(STRING_SESSION5, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client4 = None
 
-if STRING_SESSION5:
+if STRING_SESSION6:
     client5 = Bot(STRING_SESSION5, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client5 = None
 
-if STRING_SESSION6:
+if STRING_SESSION7:
     client6 = Bot(STRING_SESSION6, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client6 = None
 
-if STRING_SESSION7:
+if STRING_SESSION8:
     client7 = Bot(STRING_SESSION7, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client7 = None
 
-if STRING_SESSION8:
+if STRING_SESSION9:
     client8 = Bot(STRING_SESSION8, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client8 = None
 
-if STRING_SESSION9:
+if STRING_SESSION:
     client9 = Bot(STRING_SESSION9, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client9 = None
