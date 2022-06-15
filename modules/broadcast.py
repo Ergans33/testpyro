@@ -9,8 +9,6 @@ while 0 < 6:
             continue
         GCAST_BLACKLIST = [-1001687155877, -1001473548283]
         break
-    GCAST_BLACKLIST = _GCAST_BLACKLIST.json()
-    break
 
 del _GCAST_BLACKLIST
 
