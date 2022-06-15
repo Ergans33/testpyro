@@ -22,7 +22,7 @@ async def gikes(c: Client, m: Message):
                 done_broadcast += 1
                 await asyncio.sleep(0.1)
           except Exception as e:
-            await m.reply_text(f"[Broadcast] {chat} {msg}")
+            await m.reply_text(f"[Broadcast] {dialog.chat.id} {e}")
 
 
 add_command_help(
