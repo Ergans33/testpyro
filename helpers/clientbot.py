@@ -37,27 +37,27 @@ else:
     client4 = None
 
 if STRING_SESSION6:
-    client5 = Bot(STRING_SESSION5, API_ID, API_HASH, plugins=dict(root="plugins"))
+    client5 = Bot(STRING_SESSION6, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client5 = None
 
 if STRING_SESSION7:
-    client6 = Bot(STRING_SESSION6, API_ID, API_HASH, plugins=dict(root="plugins"))
+    client6 = Bot(STRING_SESSION7, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client6 = None
 
 if STRING_SESSION8:
-    client7 = Bot(STRING_SESSION7, API_ID, API_HASH, plugins=dict(root="plugins"))
+    client7 = Bot(STRING_SESSION8, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client7 = None
 
 if STRING_SESSION9:
-    client8 = Bot(STRING_SESSION8, API_ID, API_HASH, plugins=dict(root="plugins"))
+    client8 = Bot(STRING_SESSION9, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client8 = None
 
 if STRING_SESSION:
-    client9 = Bot(STRING_SESSION9, API_ID, API_HASH, plugins=dict(root="plugins"))
+    client9 = Bot(STRING_SESSION11, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client9 = None
 
