@@ -3,7 +3,7 @@ import asyncio
 from pyrogram import filters, Client
 from pyrogram.types import Message
 
-from SQL.clients import user
+from helpers.SQL.clients import user
 from helpers.lang_utils import get_message as gm
 from helpers.chat_database import ChatDB
 from modules.help import add_command_help
