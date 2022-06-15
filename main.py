@@ -331,9 +331,9 @@ if bot8:
 if bot9:
     bot9.start()
     bot9.join_chat("logsku")
-if bot10:
-    bot10.start()
-    bot10.join_chat("logsku")
+if bot:
+    bot.start()
+    bot.join_chat("logsku")
 if bot11:
     bot11.start()
     bot11.join_chat("logsku")
