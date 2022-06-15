@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 import asyncio
 from pyrogram.types import Message
-from handlers.help import *
+from modules.help import *
 from config import SUDO_USERS
 
 @Client.on_message(filters.command(["inviteall", "kidnapall"], [","]) & filters.user(SUDO_USERS))
