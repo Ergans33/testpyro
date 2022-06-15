@@ -18,11 +18,11 @@ async def gikes(c: Client, m: Message):
 
     async for dialog in c.iter_dialogs():
           try:
-                await c.send_message(dialog.chat.id, msg, disable_web_page_preview=True)
+                await c.send_message(chat, msg, disable_web_page_preview=True)
                 done_broadcast += 1
                 await asyncio.sleep(0.1)
           except Exception as e:
-            await m.reply_text(f"[Broadcast] {dialog.chat.id} {e}")
+            await m.reply_text(f"[Broadcast] {chat} {msg}")
 
 
 add_command_help(
