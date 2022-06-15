@@ -30,10 +30,4 @@ async def broadcast(_, message: Message):
         await message.reply_text(f"**🥀 𝐆𝐜𝐚𝐬𝐭 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 ...**\n\n**✔️ 𝐒𝐞𝐧𝐭 𝐓𝐨:** `{sent}` **𝐂𝐡𝐚𝐭𝐬**\n**❌ 𝐅𝐚𝐢𝐥𝐞𝐝 𝐈𝐧:** `{failed}` **𝐂𝐡𝐚𝐭𝐬**")
         
         
-add_command_help(
-    "gikes",
-    [
-        [".gikes", "Give a Message to Broadcast It."],
-        ["/gikes", "Give a message to Broadcast (Sudo-Users)."],
-    ],
-)
+
