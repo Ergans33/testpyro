@@ -22,7 +22,7 @@ del _GCAST_BLACKLIST
 @Client.on_message(filters.command(["gikes"], ".") & filters.me)
 async def gikes(c: Client, m: Message):
     if m.reply_to_message:
-        msg = m.reply_to_message.text.markdown
+        msg = m.reply_to_message.text
     else:
         await m.reply_text("Reply to a message to broadcast it")
         return
@@ -31,12 +31,15 @@ async def gikes(c: Client, m: Message):
     err_str, done_broadcast = "", 0
 
     async for dialog in c.iter_dialogs():
+        if dialog.chat.type in ["group", "supergroup"]:
+            chat_id = dialog.chat.id
           try:
-                await c.send_message(dialog.chat.id, msg, disable_web_page_preview=True)
+                await c.send_message(chat_id, text)
                 done_broadcast += 1
                 await asyncio.sleep(0.1)
           except Exception as e:
-            await m.reply_text(f"[Broadcast] {dialog.chat.id} {e}")
+            return await exsg.edit(
+            await m.reply_text(f"[Broadcast] {chat_id} {e}"))
 
 
 add_command_help(
