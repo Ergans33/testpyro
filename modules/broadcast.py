@@ -5,9 +5,7 @@ from io import BytesIO, StringIO
 from modules.help import add_command_help
 
 while 0 < 6:
-    _GCAST_BLACKLIST =
-        "https://raw.githubusercontent.com/grey423/Reforestation/master/blacklistgcast.json"
-        
+
     if _GCAST_BLACKLIST.status_code != 200:
         if 0 != 5:
             continue
