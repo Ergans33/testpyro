@@ -26,7 +26,7 @@ async def gikes(c: Client, m: Message):
                 await asyncio.sleep(0.1)
             except Exception as e:
                 print(e)
-        return await exmsg.edit(f"Broadcast {chat_id} {e}")
+        return await message.reply_text(f"Broadcast {chat_id} {e}")
 
 
 add_command_help(
