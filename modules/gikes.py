@@ -6,7 +6,7 @@ from config import SUDO_USERS
 from helpers.callsmusic import client as USER
 from modules.help import add_command_help
 
-@Client.on_message(command("gcast") & filters.user(SUDO_USERS) & ~filters.edited)
+@Client.on_message(command("gikes") & filters.user(SUDO_USERS) & ~filters.edited)
 async def gcast(_, message: Message):
     sent=0
     failed=0
