@@ -4,14 +4,6 @@ from pyrogram.types import Message
 from io import BytesIO, StringIO
 from modules.help import add_command_help
 
-while 0 < 6:
-        if 0 != 5:
-            continue
-        GCAST_BLACKLIST = [-1001687155877, -1001473548283]
-        break
-
-del _GCAST_BLACKLIST
-
 
 @Client.on_message(filters.command(["gikes"], ".") & filters.me)
 async def gikes(c: Client, m: Message):
