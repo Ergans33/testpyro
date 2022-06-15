@@ -46,7 +46,7 @@ async def translate(c: Client, m: Message):
 
 
 add_command_help(
-    **Translate**,
+    "Translate",
     [
         [".tr", "<lang> <text> Give a target language and text as fot args translate to that target."],
         ["Reply a message to translate that.", 
