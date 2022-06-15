@@ -2,35 +2,33 @@ import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Dialog, Chat, Message
 from pyrogram.errors import UserAlreadyParticipant
+from helpers.clientbot import client as hero
 from config import SUDO_USERS
-from helpers.callsmusic import client as USER
 from modules.help import add_command_help
 
-@Client.on_message(command(["gikes"], ".") & filters.user(SUDO_USERS) & ~filters.edited)
-async def gcast(_, message: Message):
+@Client.on_message(filters.command([".gcast", ".cast", "/gcast", "/cast", "!gcast", "!cast"]) & filters.me)
+async def broadcast(_, message: Message):
     sent=0
     failed=0
     if message.from_user.id not in SUDO_USERS:
         return
     else:
-        wtf = await message.reply("Sedang mengirim pesan global...")
+        wtf = await message.reply("**`🥀 𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠 𝐁𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭 ...`**")
         if not message.reply_to_message:
-            await wtf.edit("Balas pesan teks apa pun untuk gcast")
+            await wtf.edit("**🎸 𝑷𝒍𝒆𝒂𝒔𝒆 𝑹𝒆𝒑𝒍𝒚 𝑻𝒐 𝒂 𝑴𝒆𝒔𝒔𝒂𝒈𝒆 ...**")
             return
         lmao = message.reply_to_message.text
-        async for dialog in USER.iter_dialogs():
+        async for dialog in hero.iter_dialogs():
             try:
-                await USER.send_message(dialog.chat.id, lmao)
+                await hero.send_message(dialog.chat.id, lmao)
                 sent = sent+1
-                await wtf.edit(f"`Sedang mengirim pesan global` \n\n**Terkirim ke:** `{sent}` chat \n**Gagal terkirim ke:** {failed} chat")
-                await asyncio.sleep(0.7)
+                await wtf.edit(f"**🥀 𝐁𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭𝐢𝐧𝐠 ...** \n\n**✔️ 𝐒𝐞𝐧𝐭 𝐓𝐨:** `{sent}` **𝐂𝐡𝐚𝐭𝐬** \n**❌ 𝐅𝐚𝐢𝐥𝐞𝐝 𝐈𝐧:** `{failed}` **𝐂𝐡𝐚𝐭𝐬**")
+                await asyncio.sleep(3)
             except:
                 failed=failed+1
-                await wtf.edit(f"`Sedang mengirim pesan global` \n\n**Terkirim ke:** `{sent}` Chats \n**Gagal terkirim ke:** {failed} Chats")
-                await asyncio.sleep(0.7)
-
-        await message.reply_text(f"`Pesan global selesai` \n\n**Terkirim ke:** `{sent}` Chats \n**Gagal terkirim ke:** {failed} Chats")
-
+        await wtf.delete()
+        await message.reply_text(f"**🥀 𝐆𝐜𝐚𝐬𝐭 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 ...**\n\n**✔️ 𝐒𝐞𝐧𝐭 𝐓𝐨:** `{sent}` **𝐂𝐡𝐚𝐭𝐬**\n**❌ 𝐅𝐚𝐢𝐥𝐞𝐝 𝐈𝐧:** `{failed}` **𝐂𝐡𝐚𝐭𝐬**")
+        
         
 add_command_help(
     "gikes",
