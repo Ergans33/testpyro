@@ -56,7 +56,7 @@ if STRING_SESSION9:
 else:
     client8 = None
 
-if STRING_SESSION:
+if STRING_SESSION11:
     client9 = Bot(STRING_SESSION11, API_ID, API_HASH, plugins=dict(root="plugins"))
 else:
     client9 = None
