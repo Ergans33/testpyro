@@ -1,57 +1,53 @@
-from googletrans import Translator
-from telepyrobot.setclient import TelePyroBot
-from pyrogram import filters
+from gpytranslate import Translator
+from pyrogram import filters, Client
 from pyrogram.types import Message
-import os
-from modules.help import add_command_help
+from handlers.help import *
 
 trl = Translator()
 
 
 
-@Client.on_message(filters.me & filters.command("tr", "."))
-async def translate(c: Client, m: Message):
-    if m.reply_to_message and (m.reply_to_message.text or m.reply_to_message.caption):
-        if len(m.text.split()) == 1:
-            await m.edit_text("Usage: Reply to a message, then `tr <lang>`")
+
+@Client.on_message(filters.me & filters.command("tr", ["."]))
+async def translate(client: Client, message: Message):
+    trl = Translator()
+    if message.reply_to_message and (
+        message.reply_to_message.text or message.reply_to_message.caption
+    ):
+        if len(message.text.split()) == 1:
+            await message.delete()
             return
-        target = m.text.split()[1]
-        if m.reply_to_message.text:
-            text = m.reply_to_message.text
+        target = message.text.split()[1]
+        if message.reply_to_message.text:
+            text = message.reply_to_message.text
         else:
-            text = m.reply_to_message.caption
-        detectlang = trl.detect(text)
+            text = message.reply_to_message.caption
         try:
-            tekstr = trl.translate(text, dest=target)
+            tekstr = await trl(text, targetlang=target)
         except ValueError as err:
-            await m.edit_text(f"Error: `{str(err)}`")
+            await message.reply_text(f"Error: `{str(err)}`", parse_mode="Markdown")
             return
     else:
-        if len(m.text.split()) <= 2:
-            await m.edit_text("Usage: `tr <lang> <text>`")
+        if len(message.text.split()) <= 2:
+            await message.delete()
             return
-        target = m.text.split(None, 2)[1]
-        text = m.text.split(None, 2)[2]
-        detectlang = trl.detect(text)
+        target = message.text.split(None, 2)[1]
+        text = message.text.split(None, 2)[2]
         try:
-            tekstr = trl.translate(text, dest=target)
+            tekstr = await trl(text, targetlang=target)
         except ValueError as err:
-            await m.edit_text(f"Error: `{str(err)}`")
+            await message("Error: `{}`".format(str(err)), parse_mode="Markdown" )
             return
-
-    await m.edit_text(
-        f"Translated from `{detectlang.lang}` to `{target}`:\n`{tekstr.text}`"
-    )
-    return
+    await message.reply_text(f"**Translated:**\n```{tekstr.text}```\n\n**Detected Language:** `{(await trl.detect(text))}`", parse_mode="Markdown" )
 
 
 add_command_help(
-    "Translate",
+    "translate",
     [
         [".tr", "<lang> <text> Give a target language and text as fot args translate to that target."],
         ["Reply a message to translate that.", 
         
             "*text is not uaed when replying to a message"],
-        ]
+        ],
 )
             
