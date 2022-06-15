@@ -9,7 +9,7 @@ from modules.help import add_command_help
 async def gikes(c: Client, m: Message):
     if xx := m.pattern_match.group(1):
         msg = xx
-    if m.reply_to_message:
+    elif m.reply_to_message:
         msg = m.reply_to_message.text.markdown
     else:
         await m.reply_text("Reply to a message to broadcast it")
