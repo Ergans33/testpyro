@@ -11,9 +11,9 @@ async def gcast_(c: Client, m: Message):
         text = m.reply_to_message.text
     else:
         text = m.text[7:]
-    msg = await m.reply(message.chat.id, "process_gcast"))
+    msg = await m.reply(m.chat.id, "process_gcast"))
     error = success = 0
-    gcast_type = get_chat(m.chat.id)[0]["gcast_type"]
+    gcast_type = m.get_chat(m.chat.id)[0]["gcast_type"]
     sender = user if gcast_type == "user" else c
     async for dialog in user.iter_dialogs():
         if dialog.chat.type in ["group", "supergroup"]:
