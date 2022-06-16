@@ -1,6 +1,6 @@
 import asyncio
 
-from prettytable import PrettyTable
+from telegraph import Telegraph
 from pyrogram import filters, Client
 from pyrogram.types import Message
 
@@ -23,7 +23,7 @@ async def module_help(client: Client, message: Message):
         all_commands = ""
         all_commands += "Please specify which module you want help for!! \nUsage: `.help [module_name]`\n\n"
 
-        
+        ac = Telegraph()
         ac.header = False
         ac.title = "👉🏽Peler Modules👈🏽"
         ac.align = "l"
