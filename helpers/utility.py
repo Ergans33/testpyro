@@ -5,7 +5,7 @@ import time
 import uuid
 from random import randint
 from io import BytesIO
-from main import aiohttpsession as aiosession
+from config import aiohttpsession as aiosession
 
 
 def split_list(input_list, n):
