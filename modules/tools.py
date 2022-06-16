@@ -174,7 +174,7 @@ async def revert(client: Client, message: Message):
 
 # Tagall
 
-@Client.on_message(filters.command("tagall", ["~", "!", "°") & filters.me)
+@Client.on_message(filters.command("tagall", ["~", "!", "°"]) & filters.me)
 async def tag_all_users(client: Client, message: Message):
     await message.delete()
     if len(message.text.split()) >= 2:
