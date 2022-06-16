@@ -16,7 +16,7 @@ def my_prefix():
     try:
         prefix = get_prefix()
     except configparser.NoSectionError:
-        config.add_section("~", "!", "°")
+        config.add_section("prefix")
         config.set("~", "!", "°")
         with open(config_path, "w") as config_file:
             config.write(config_file)
