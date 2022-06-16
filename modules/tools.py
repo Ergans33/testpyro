@@ -187,7 +187,7 @@ def choose_random_font():
 
 
 @Client.on_message(filters.command("logo", ["~", "!", "°"]) & filters.me)
-async def rlogo(client: Client, message: Message):
+async def logo(client: Client, message: Message):
     event = await edit_or_reply(message, "`Processing.....`")
     text = get_text(message)
     if not text:
