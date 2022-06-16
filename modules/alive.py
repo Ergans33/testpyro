@@ -119,7 +119,7 @@ async def alive(client: Client, e: Message):
         Alive_msg += f"► Version = `Super 1.2.3` \n"
         Alive_msg += f"► Pyrogram Ver = `{pyro_vr}` \n"
         Alive_msg += f"► Anak Buah Peler Ke = `{ids}` \n"
-        Alive_msg += f"► Support = [Join](https://t.me/gaclexxa) \n"
+        Alive_msg += f"► Support = [Peler](https://t.me/gaclexxa) \n"
         Alive_msg += f"◈ ━━━━━━ ◆ ━━━━━━ ◈ \n\n"
         await e.reply_photo(
         photo=ALIVE_PIC,
@@ -131,7 +131,7 @@ async def alive(client: Client, e: Message):
         Alive_msg += f"◈ ━━━━━━ ◆ ━━━━━━ ◈ \n"
         Alive_msg += f"► Version = `Super 1.2.3` \n"
         Alive_msg += f"► Pyrogram Ver = `1.4.16` \n"
-        Alive_msg += f"► Support = [Join](https://t.me/gaclexxa) \n"
+        Alive_msg += f"► Support = [Peler](https://t.me/gaclexxa) \n"
         Alive_msg += f"◈ ━━━━━━ ◆ ━━━━━━ ◈ \n\n"
         await e.reply_photo(
         photo=ALIVE_PIC,
