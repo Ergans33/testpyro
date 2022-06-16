@@ -1,4 +1,4 @@
-from helpers.SQL import *
+from helpers.SQL import db
 
 gbun = dbb
 
