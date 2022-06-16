@@ -34,7 +34,6 @@ async def module_help(client: Client, message: Message):
 
         await message.edit(
                             f"```{str(ac)}
-                            
                             prefix = ~, !, °
                             ```")
 
