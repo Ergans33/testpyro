@@ -55,7 +55,7 @@ async def promotte(client: Client, message: Message):
                         can_restrict_members=True,
                         can_invite_users=True,
                         can_pin_messages=True,
-                        can_manage_call=True,
+                        can_manage_voice_chats=True,
                     )
 
                     await asyncio.sleep(2)
@@ -135,7 +135,7 @@ async def demote(client: Client, message: Message):
             can_restrict_members=False,
             can_invite_users=False,
             can_pin_messages=False,
-            can_manage_call=False,
+            can_manage_voice_chats=False,
             can_promote_members=False,)
                     await message.edit_text("demoted due to corruption")
                     await asyncio.sleep(5)
