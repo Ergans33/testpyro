@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from pyrogram import Message
+from pyrogram.types import Message
 from helpers.utility import make_carbon, capture_err
 from modules.help import *
 
