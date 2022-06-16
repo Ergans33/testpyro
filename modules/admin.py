@@ -209,7 +209,7 @@ async def unpin_message(client: Client, message: Message):
             await client.unpin_chat_message(chat_id , reply_msg_id )
             await client.edit_message_text(chat_id , msg_id , "Done the Job master !")
         else:
-            zuzu=await RaiChUB.get_chat_member(chat_id , "me")
+            zuzu= await RaiChUB.get_chat_member(chat_id , "me")
             can_pin=zuzu.can_pin_messages
             if can_pin == None:
                 await client.edit_message_text(chat_id , msg_id , "Can't pin messages bruh 🥱") 
