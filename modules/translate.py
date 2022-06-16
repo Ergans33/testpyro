@@ -8,7 +8,7 @@ trl = Translator()
 
 
 
-@Client.on_message(filters.me & filters.command("tr", ["."]))
+@Client.on_message(filters.me & filters.command("tr", ["!"]))
 async def translate(client: Client, message: Message):
     trl = Translator()
     if message.reply_to_message and (
