@@ -1,4 +1,4 @@
-from helpers.SQL import dbb
+from helpers.SQL import *
 
 gbun = dbb["GBAN"]
 
