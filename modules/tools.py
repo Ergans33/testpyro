@@ -139,8 +139,8 @@ async def clone(client: Client, message: Message):
     userk = get_user(message, text)[0]
     user_ = await client.get_users(userk)
     if not user_:
-    await op.edit("`Whom i should clone:(`")
-    return
+            await op.edit("`Whom i should clone:(`")
+            return
     
     get_bio = await client.get_chat(user_.id)
     f_name = user_.first_name
