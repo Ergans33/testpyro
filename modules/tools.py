@@ -215,12 +215,12 @@ async def logo(client: Client, message: Message):
         await client.send_photo(
             message.chat.id,
             photo=file_name,
-            caption="Made Using Zaid Userbot",
+            caption="By Peler Userbot",
             reply_to_message_id=message.reply_to_message.message_id,
         )
     else:
         await client.send_photo(
-            message.chat.id, photo=file_name, caption="Made Using Zaid Userbot"
+            message.chat.id, photo=file_name, caption="By Peler Userbot"
         )
     await client.send_chat_action(message.chat.id, "cancel")
     await event.delete()
