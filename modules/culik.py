@@ -4,10 +4,9 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from modules.help import *
 from config import SUDO_USERS
-from prefix import my_prefix
-prefix = my_prefix()
 
-@Client.on_message(filters.command(["culik"], prefixes=prefix) & filters.user(SUDO_USERS))
+
+@Client.on_message(filters.command(["culik"], ["~", "!", "°"]) & filters.user(SUDO_USERS))
 async def inviteall(client: Client, message: Message):
     zaid = await message.reply_text("⚡ Gime Title also\n ex: /inviteall @yangmaudiculik")
     text = message.text.split(" ", 1)
