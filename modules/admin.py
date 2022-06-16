@@ -398,7 +398,7 @@ async def member_unban(client: Client, message: Message):
 # kick
 
 
-@Client.on_message(filters.command("kick", "~", "!", "°") & filters.me)
+@Client.on_message(filters.command("kick", ["~", "!", "°"]) & filters.me)
 async def kick_user(bot: Client, message: Message):
     if await CheckReplyAdmin(message) and await CheckAdmin(message):
         try:
