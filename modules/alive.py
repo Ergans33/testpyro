@@ -7,12 +7,9 @@ from main import *
 from main import ALIVE_PIC
 from modules.help import *
 
-from prefix import my_prefix
-prefix = my_prefix()
- 
 
  
-@Client.on_message(filters.command(["alive", "awake"], prefixes=prefix) & filters.me)
+@Client.on_message(filters.command(["alive", "awake"], ["~", "!", "°"]) & filters.me)
 async def alive(client: Client, e: Message):
     ids = 0
     try:
