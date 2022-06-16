@@ -51,12 +51,12 @@ async def promotte(client: Client, message: Message):
                         message.chat.id,
                         user_id,
                         
-                        can_change_info=can_change_info,
-                        can_delete_messages=can_delete_messages,
-                        can_restrict_members=can_restrict_members,
-                        can_invite_users=can_invite_users,
-                        can_pin_messages=can_pin_messages,
-                        can_manage_voice_chats=can_manage_voice_chats,
+                        can_change_info=True,
+                        can_delete_messages=True,
+                        can_restrict_members=True,
+                        can_invite_users=True,
+                        can_pin_messages=True,
+                        can_manage_voice_chats=True,
                     )
 
                     await asyncio.sleep(2)
