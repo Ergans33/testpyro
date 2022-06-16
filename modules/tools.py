@@ -172,26 +172,45 @@ async def revert(client: Client, message: Message):
     await message.edit("`I am back!`")
 
 
-# Logo
+# Tagall
 
-def choose_random_font():
-    fonts_ = [
-        "https://github.com/DevsExpo/FONTS/raw/main/Ailerons-Typeface.otf",
-        "https://github.com/DevsExpo/FONTS/raw/main/Toxico.otf",
-        "https://github.com/DevsExpo/FONTS/raw/main/againts.otf",
-        "https://github.com/DevsExpo/FONTS/raw/main/go3v2.ttf",
-        "https://github.com/DevsExpo/FONTS/raw/main/vermin_vibes.ttf",
-    ]
-    random_s = random.choice(fonts_)
-    return wget.download(random_s)
+@Client.on_message(filters.command("tagall", ["~", "!", "°") & filters.me)
+async def tag_all_users(client: Client, message: Message):
+    await message.delete()
+    if len(message.text.split()) >= 2:
+        text = message.text.split(None, 1)[1]
+    else:
+        text = "Hi all"
+    kek = client.iter_chat_members(message.chat.id)
+    async for a in kek:
+        if not a.user.is_bot:
+            text += mention_html(a.user.id, "\u200b")
+    if message.reply_to_message:
+        await client.send_message(message.chat.id, text, reply_to_message_id=message.reply_to_message.message_id,
+                                  parse_mode="html")
+    else:
+        await client.send_message(message.chat.id, text, parse_mode="html")
+
 
 
 add_command_help(
     "tools",
     [
-        ["tr", "Translate some text by give a text or reply that text/caption."],
-        ["tgm", "Reply to Media as args to upload it to telegraph."],
-        
-        ["clone|unclone", "To Clone someone Profile."],
+        [
+            "tr", 
+            "Translate some text by give a text or reply that text/caption."
+        ],
+        [
+            "tgm", 
+            "Reply to Media as args to upload it to telegraph."
+        ],
+        [
+            "tagall",
+            "to mention Everyone ",
+        ],
+        [
+            "clone|unclone", 
+            "To Clone someone Profile."
+        ],
     ],
 )
