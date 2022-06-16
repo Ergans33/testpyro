@@ -18,12 +18,6 @@ def start() -> scoped_session:
     BASE.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
-def start() -> scoped_session:
-    dbi_url=DB_URL
-    engine = create_engine(dbi_url)
-    BASE.metadata.bind = engine
-    BASE.metadata.create_all(engine)
-    return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 try:
     BASE = declarative_base()
