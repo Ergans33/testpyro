@@ -18,7 +18,7 @@ async def gikes(c: Client, m: Message):
     err_str, done_broadcast = "", 0
 
     async for dialog in c.iter_dialogs():
-    if dialog.chat.type in ["supergroup", "channel"]:
+        if dialog.chat.type in ["supergroup", "channel"]:
           try:
                 await c.send_message(dialog.chat.id, msg, disable_web_page_preview=True)
                 done_broadcast += 1
