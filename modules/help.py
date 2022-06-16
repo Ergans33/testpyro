@@ -28,13 +28,14 @@ async def module_help(client: Client, message: Message):
         ac.header = False
         ac.title = "👉🏽Peler Modules👈🏽"
         ac.align = "l"
-        ac.add_row = "prefix = ~, !, °"
+        ac.footer = "prefix = ~, !, °"
 
         for x in split_list(sorted(CMD_HELP.keys()), 2):
             ac.add_row([x[0], x[1] if len(x) >= 2 else None])
 
         await message.edit(f"```{str(ac)}```")
-
+        await message.edit(f"```{str(ac.footer)}```")
+        
     if help_arg:
         if help_arg in CMD_HELP:
             commands: dict = CMD_HELP[help_arg]
