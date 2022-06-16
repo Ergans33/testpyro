@@ -6,11 +6,13 @@ from pyrogram.types import Message
 
 from main import CMD_HELP
 from helpers.utility import split_list
+from prefix import my_prefix
+prefix = my_prefix()
 
 heading = "🖕🏽 **{0}** 🖕🏽\n"
 
 
-@Client.on_message(filters.command("help", ["!"]) & filters.me)
+@Client.on_message(filters.command("help", prefixes=prefix) & filters.me)
 async def module_help(client: Client, message: Message):
     cmd = message.command
 
