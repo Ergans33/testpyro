@@ -5,9 +5,6 @@ from typing import Tuple
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from modules.help import *
-from helpers.SQL.gbandb import gban_info, gban_list, gban_user, ungban_user
-from helpers.SQL.gmutedb import gmute, is_gmuted, ungmute
-from helpers.SQL.rraid import zaidub_info, rzaid, runzaid
 
 
 async def iter_chats(client: Client):
