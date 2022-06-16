@@ -48,7 +48,7 @@ if LOG_GROUP:
 else:
     Owner = 5372076947
 
-aiohttpsession = ClientSession()
+
 
 if STRING_SESSION1:
     bot1 = Client(session_name= STRING_SESSION1, api_id = API_ID, api_hash = API_HASH , plugins=dict(root="modules"))
