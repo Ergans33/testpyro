@@ -29,4 +29,5 @@ add_command_help(
             "carbon", 
             "Reply to text use filter carbon."
         ],
+    [
 )
