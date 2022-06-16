@@ -10,7 +10,7 @@ from helpers.utility import split_list
 heading = "🖕🏽 **{0}** 🖕🏽\n"
 
 
-@Client.on_message(filters.command("help", "!") & filters.me)
+@Client.on_message(filters.command("help", ["!"]) & filters.me)
 async def module_help(client: Client, message: Message):
     cmd = message.command
 
