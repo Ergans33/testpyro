@@ -143,7 +143,7 @@ add_command_help(
     "alive",
     [
         [
-            ".alive",
+            "alive",
             "This Command for check your bot working or nt",
         ]
     ],
