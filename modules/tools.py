@@ -18,15 +18,13 @@ from modules.help import *
 
 from PIL import Image, ImageDraw, ImageFont
 
-from prefix import my_prefix
-prefix = my_prefix()
 
 # Translate
 
 trl = Translator()
 
 
-@Client.on_message(filters.me & filters.command("tr", prefixes=prefix))
+@Client.on_message(filters.me & filters.command("tr", ["~", "!", "°"]))
 async def translate(client: Client, message: Message):
     trl = Translator()
     if message.reply_to_message and (
@@ -61,7 +59,7 @@ async def translate(client: Client, message: Message):
 
 # Telegraph
 
-@Client.on_message(filters.command("tgm", prefixes=prefix) & filters.me) 
+@Client.on_message(filters.command("tgm", ["~", "!", "°"]) & filters.me) 
 async def telegraph(client: Client, message: Message):
     replied = message.reply_to_message
     if not replied:
@@ -102,7 +100,7 @@ async def telegraph(client: Client, message: Message):
 
 # Sangmata
 
-@Client.on_message(filters.command("sg", prefixes=prefix) & filters.me)
+@Client.on_message(filters.command("sg", ["~", "!", "°"]) & filters.me)
 async def sg(client: Client, message: Message):
     lol = await edit_or_reply(message, "Processing please wait")
     if not message.reply_to_message:
@@ -134,7 +132,7 @@ OWNER = os.environ.get("OWNER", None)
 BIO = os.environ.get("BIO", "Peler Userbot")
 
 
-@Client.on_message(filters.command("clone", prefixes=prefix) & filters.me)
+@Client.on_message(filters.command("clone", ["~", "!", "°"]) & filters.me)
 async def clone(client: Client, message: Message):
     text = get_text(message)
     op = await edit_or_reply(message, "`Cloning`")
@@ -158,7 +156,7 @@ async def clone(client: Client, message: Message):
     await message.edit(f"**From now I'm** __{f_name}__")
 
 
-@Client.on_message(filters.command("unclone", prefixes=prefix) & filters.me)
+@Client.on_message(filters.command("unclone", ["~", "!", "°"]) & filters.me)
 async def revert(client: Client, message: Message):
     await message.edit("`Uncloning`")
     r_bio = BIO
@@ -188,7 +186,7 @@ def choose_random_font():
     return wget.download(random_s)
 
 
-@Client.on_message(filters.command("logo", prefixes=prefix) & filters.me)
+@Client.on_message(filters.command("logo", ["~", "!", "°"]) & filters.me)
 async def rlogo(client: Client, message: Message):
     event = await edit_or_reply(message, "`Processing.....`")
     text = get_text(message)
