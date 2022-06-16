@@ -6,13 +6,12 @@ from pyrogram.types import Message
 
 from main import CMD_HELP
 from helpers.utility import split_list
-from prefix import my_prefix
-prefix = my_prefix()
+
 
 heading = "🖕🏽 **{0}** 🖕🏽\n"
 
 
-@Client.on_message(filters.command("help", prefixes=prefix) & filters.me)
+@Client.on_message(filters.command("help", ["~", "!", "°"]) & filters.me)
 async def module_help(client: Client, message: Message):
     cmd = message.command
 
@@ -26,14 +25,14 @@ async def module_help(client: Client, message: Message):
         all_commands += "Please specify which module you want help for!! \nUsage: `.help [module_name]`\n\n"
 
         ac = PrettyTable()
-        ac.header = "Peler"
+        ac.header = False
         ac.title = "👉🏽Peler Modules👈🏽"
         ac.align = "l"
 
         for x in split_list(sorted(CMD_HELP.keys()), 2):
             ac.add_row([x[0], x[1] if len(x) >= 2 else None])
 
-        await message.edit(f"```{str(ac)}```")
+        await message.edit(f"```{str(ac)} prefix = ~, !, °```")
 
     if help_arg:
         if help_arg in CMD_HELP:
