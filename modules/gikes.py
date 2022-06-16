@@ -6,7 +6,7 @@ from modules.help import add_command_help
 
 
 
-@Client.on_message(filters.command(["gikes"], ".", ",") & filters.me)
+@Client.on_message(filters.command(["gikes"], "!") & filters.me)
 async def gikes(c: Client, m: Message):
     if m.reply_to_message:
         msg = m.reply_to_message.text.markdown
@@ -30,6 +30,6 @@ async def gikes(c: Client, m: Message):
 add_command_help(
     "gikes",
     [
-        [".gikes", "Give a Message to Broadcast It."],
+        ["!gikes", "Give a Message to Broadcast It."],
     ],
 )
