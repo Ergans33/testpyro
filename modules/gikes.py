@@ -29,6 +29,6 @@ async def gikes(c: Client, m: Message):
 add_command_help(
     "gikes",
     [
-        ["!gikes", "Give a Message to Broadcast It."],
+        ["gikes", "Give a Message to Broadcast It."],
     ],
 )
