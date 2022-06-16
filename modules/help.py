@@ -26,7 +26,7 @@ async def module_help(client: Client, message: Message):
         all_commands += "Please specify which module you want help for!! \nUsage: `.help [module_name]`\n\n"
 
         ac = PrettyTable()
-        ac.header = False
+        ac.header = "Peler"
         ac.title = "👉🏽Peler Modules👈🏽"
         ac.align = "l"
 
