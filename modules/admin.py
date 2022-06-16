@@ -325,7 +325,7 @@ async def unmute(client: Client, message: Message):
 async def member_ban(client: Client, message: Message):
     if message.chat.type in ["group", "supergroup"]:
         chat_id = message.chat.id
-        me_m = await client.get_me
+        me_m = await client.get_me()
         me_ = await message.chat.get_member(int(me_m.id))
         if not me_.can_restrict_members:
          await message.edit("`You Don't Have Ban Permission!`")
