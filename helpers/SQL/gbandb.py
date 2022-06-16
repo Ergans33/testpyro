@@ -1,6 +1,6 @@
-from helpers.SQL import *
+from helpers.SQL import dbb
 
-gbun = db
+gbun = dbb["GBAN"]
 
 
 async def gban_user(user, reason="#GBanned"):
