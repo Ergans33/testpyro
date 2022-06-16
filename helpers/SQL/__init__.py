@@ -14,15 +14,14 @@ def start() -> scoped_session:
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 def start() -> scoped_session:
-    dbi_url=DB_URL
-    engine = create_engine(dbi_url)
+    engine = create_engine(DB_URL)
     BASE.metadata.bind = engine
     BASE.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
 try:
     BASE = declarative_base()
-    SESSION = start()
+    STRING_SESSION = start()
 except AttributeError as e:
     print(
         "DB_URI is not configured. Features depending on the database might have issues."
