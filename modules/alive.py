@@ -8,7 +8,7 @@ from modules.help import *
  
 
  
-@Client.on_message(filters.command(["alive", "awake"], [".", "!"]) & filters.me)
+@Client.on_message(filters.command(["alive", "awake"], ["!"]) & filters.me)
 async def alive(client: Client, e: Message):
     ids = 0
     try:
