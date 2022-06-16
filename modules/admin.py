@@ -50,7 +50,7 @@ async def promotte(client: Client, message: Message):
                     await client.promote_chat_member(
                         message.chat.id,
                         user_id,
-                        can_add_admin=True,
+                        
                         can_change_info=True,
                         can_delete_messages=True,
                         can_restrict_members=True,
@@ -129,7 +129,7 @@ async def demote(client: Client, message: Message):
              message.chat.id,
              user_id,
             is_anonymous=False,
-            can_add_admin=None,
+            
             can_change_info=False,
             can_post_messages=False,
             can_edit_messages=False,
