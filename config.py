@@ -6,6 +6,9 @@ from dotenv import load_dotenv
 if os.path.exists("local.env"):
     load_dotenv("local.env")
 que = {}
+
+aiohttpsession = ClientSession()
+
 SUDO_USERS = list(map(int, getenv("SUDO_USERS", "5372076947").split()))
 API_ID = int(getenv("API_ID", "19002012"))
 API_HASH = getenv("API_HASH", "9ea6c017c0af6616a1ffc82fe06b3c60")
