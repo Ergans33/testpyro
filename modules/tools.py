@@ -233,7 +233,7 @@ add_command_help(
     [
         ["tr", "Translate some text by give a text or reply that text/caption."],
         ["tgm", "Reply to Media as args to upload it to telegraph."],
-        ["sg", "Reply to a user to find name history."],
+        
         ["clone|unclone", "To Clone someone Profile."],
         ["logo", "To make a random logo."],
     ],
