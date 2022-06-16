@@ -101,11 +101,11 @@ async def gmute_him(client: Client, message: Message):
     if userz.id == mee.id:
         await g.edit("`Are you kidding with ne`")
         return
-    if await is_gmuted(userz.id):
+    if await is_gmuted(user.id):
         await g.edit("`Re-Gmute? Seriously? :/`")
         return
-    await gmute(userz.id, reason)
-    gmu = f"**#Gmutted** \n**User :** `{userz.id}` \n**Reason :** `{reason}`"
+    await gmute(user.id, reason)
+    gmu = f"**#Gmutted** \n**User :** `{user.id}` \n**Reason :** `{reason}`"
     await g.edit(gmu)
     
 
@@ -128,11 +128,11 @@ async def gmute_him(client: Client, message: Message):
     if userz.id == mee.id:
         await ug.edit("`Are ya kidding with me`")
         return
-    if not await is_gmuted(userz.id):
+    if not await is_gmuted(user.id):
         await ug.edit("`Un-Gmute A Non Gmutted User? Seriously? :/`")
         return
-    await ungmute(userz.id)
-    ugmu = f"**#Un-Gmutted** \n**User :** `{userz.id}`"
+    await ungmute(user.id)
+    ugmu = f"**#Un-Gmutted** \n**User :** `{user.id}`"
     await ug.edit(ugmu)
    
 
@@ -158,7 +158,7 @@ async def gbun_him(client: Client, message: Message):
     if userz.id == mee.id:
         await gbun.edit("`Why bothering yourself`")
         return
-    if await gban_info(userz.id):
+    if await gban_info(user.id):
         await gbun.edit("`Re-Gban? Seriously? :/`")
         return
     await gbun.edit("`Please, Wait Fectching Your Chats!`")
@@ -170,11 +170,11 @@ async def gbun_him(client: Client, message: Message):
     await gbun.edit("`Starting GBans Now!`")
     for devils in chat_dict:
         try:
-            await client.kick_chat_member(devils, int(userz.id))
+            await client.kick_chat_member(devils, int(user.id))
         except:
             failed += 1
-    await gban_user(userz.id, reason)
-    gbanned = f"**#GBanned** \n**User :** [{userz.first_name}](tg://user?id={userz.id}) \n**Reason :** `{reason}` \n**Affected Chats :** `{chat_len-failed}`"
+    await gban_user(user.id, reason)
+    gbanned = f"**#GBanned** \n**User :** [{user.first_name}](tg://user?id={user.id}) \n**Reason :** `{reason}` \n**Affected Chats :** `{chat_len-failed}`"
     await gbun.edit(gbanned)
     
 # ungban
@@ -197,7 +197,7 @@ async def ungbun_him(client: Client, message: Message):
     if userz.id == mee.id:
         await ungbun.edit("`what a joke`")
         return
-    if not await gban_info(userz.id):
+    if not await gban_info(users.id):
         await ungbun.edit("`Un-Gban A Ungbanned User? Seriously? :/`")
         return
     await ungbun.edit("`Please, Wait Fectching Your Chats!`")
@@ -209,11 +209,11 @@ async def ungbun_him(client: Client, message: Message):
     await ungbun.edit("`Starting Un-GBans Now!`")
     for devils in chat_dict:
         try:
-            await client.unban_chat_member(devils, int(userz.id))
+            await client.unban_chat_member(devils, int(user.id))
         except:
             failed += 1
     await ungban_user(userz.id)
-    ungbanned = f"**#Un_GBanned** \n**User :** [{userz.first_name}](tg://user?id={userz.id}) \n**Affected Chats :** `{chat_len-failed}`"
+    ungbanned = f"**#Un_GBanned** \n**User :** [{user.first_name}](tg://user?id={user.id}) \n**Affected Chats :** `{chat_len-failed}`"
     await ungbun.edit(ungbanned)
     
 # gbanlist
