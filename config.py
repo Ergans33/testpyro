@@ -2,6 +2,7 @@ import os
 from os import getenv
 
 from dotenv import load_dotenv
+from aiohttp import ClientSession
 
 if os.path.exists("local.env"):
     load_dotenv("local.env")
