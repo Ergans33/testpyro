@@ -3,6 +3,8 @@ import math
 import random
 import time
 import uuid
+import sys
+import traceback
 from random import randint
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
 from io import BytesIO
