@@ -3,12 +3,8 @@ import math
 import random
 import time
 import uuid
-import sys
-import traceback
 from random import randint
-from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
 from io import BytesIO
-from functools import wraps
 
 
 def split_list(input_list, n):
@@ -28,32 +24,6 @@ async def make_carbon(code):
         image = BytesIO(await resp.read())
     image.name = "carbon.png"
     return image
-
-
-def capture_err(func):
-    @wraps(func)
-    async def capture(client, message, *args, **kwargs):
-        try:
-            return await func(client, message, *args, **kwargs)
-        except ChatWriteForbidden:
-            await app.leave_chat(message.chat.id)
-            return
-        except Exception as err:
-            exc_type, exc_obj, exc_tb = sys.exc_info()
-            errors = traceback.format_exception(
-                etype=exc_type,
-                value=exc_obj,
-                tb=exc_tb,
-            )
-            error_feedback = split_limits(
-                "**ERROR** | `{}` | `{}`\n\n```{}```\n\n```{}```\n".format(
-                    0 if not message.from_user else message.from_user.id,
-                    0 if not message.chat else message.chat.id,
-                    message.text or message.caption,
-                    "".join(errors),
-                ),
-            )
-    return capture
     
 
 def human_time(*args, **kwargs):
