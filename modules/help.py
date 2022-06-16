@@ -35,8 +35,7 @@ async def module_help(client: Client, message: Message):
             ac.add_row([x[0], x[1] if len(x) >= 2 else None])
             
 
-        await message.edit(f"```{str(ac)}
-        prefix = ~,!,°```")
+        await message.edit(f"```{str(ac)}```")
         
     if help_arg:
         if help_arg in CMD_HELP:
