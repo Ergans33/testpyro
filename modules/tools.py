@@ -12,6 +12,8 @@ from pyrogram.errors import RPCError
 from pyrogram import * 
 from pyrogram.types import *
 
+from helpers.utility import make_carbon
+from helpers.errors import capture_err
 from helpers.basic import edit_or_reply, get_text, get_user
 from helpers.parser import mention_html, mention_markdown
 
@@ -191,8 +193,27 @@ async def tag_all_users(client: Client, message: Message):
                                   parse_mode="html")
     else:
         await client.send_message(message.chat.id, text, parse_mode="html")
+        
+# Carbon
 
-
+@Client.on_message(filters.me & filters.command("carbon", ["~", "!", "°"]) & ~filters.edited)
+@capture_err
+async def carbon_func(client: Client, message: Message):
+    if not message.reply_to_message:
+        return await message.reply_text(
+            "Reply to a text message to make carbon."
+        )
+    if not message.reply_to_message.text:
+        return await message.reply_text(
+            "Reply to a text message to make carbon."
+        )
+    m = await message.reply_text("Preparing Carbon")
+    carbon = await make_carbon(message.reply_to_message.text)
+    await m.edit("Uploading")
+    await client.send_document(message.chat.id, carbon)
+    await m.delete()
+    carbon.close()
+        
 
 add_command_help(
     "tools",
@@ -208,6 +229,10 @@ add_command_help(
         [
             "tagall",
             "to mention Everyone ",
+        ],
+        [
+            "carbon", 
+            "Reply to text use filter carbon."
         ],
         [
             "clone|unclone", 
