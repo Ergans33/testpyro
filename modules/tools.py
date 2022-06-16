@@ -232,7 +232,7 @@ add_command_help(
         ],
         [
             "carbon", 
-            "Reply to text use filter carbon."
+            "Reply to text use image carbon."
         ],
         [
             "clone|unclone", 
