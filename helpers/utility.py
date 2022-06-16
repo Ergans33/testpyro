@@ -5,6 +5,7 @@ import time
 import uuid
 from random import randint
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
+from io import BytesIO
 
 
 def split_list(input_list, n):
@@ -16,6 +17,14 @@ def split_list(input_list, n):
     """
     n = max(1, n)
     return [input_list[i: i + n] for i in range(0, len(input_list), n)]
+
+
+async def make_carbon(code):
+    url = "https://carbonara.vercel.app/api/cook"
+    async with aiosession.post(url, json={"code": code}) as resp:
+        image = BytesIO(await resp.read())
+    image.name = "carbon.png"
+    return image
 
 
 def capture_err(func):
