@@ -136,7 +136,13 @@ async def demote(client: Client, message: Message):
             can_invite_users=False,
             can_pin_messages=False,
             can_manage_voice_chats=False,
-            can_promote_members=False,)
+            can_promote_members=False,
+                    )
+                    
+                    await asyncio.sleep(2)
+                    await client.set_administrator_title(
+                        message.chat.id, user_id, custom_rank
+                  )
                     await message.edit_text("demoted due to corruption")
                     await asyncio.sleep(5)
                     await message.delete()
