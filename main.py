@@ -1,5 +1,4 @@
 import logging
-from aiohttp import ClientSession
 from pyrogram import Client, filters, idle
 from pyrogram.types import *
 import requests
