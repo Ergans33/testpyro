@@ -6,6 +6,7 @@ import uuid
 from random import randint
 from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
 from io import BytesIO
+from functools import wraps
 
 
 def split_list(input_list, n):
