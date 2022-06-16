@@ -343,7 +343,7 @@ async def member_ban(client: Client, message: Message):
                 return
             if user_id:
                 try:
-                    await client.kick_chat_member(chat_id, user_id)
+                    await client.ban_chat_member(chat_id, user_id)
                     await message.delete()
                 except UsernameInvalid:
                     await message.edit_text("`invalid username`")
