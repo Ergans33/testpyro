@@ -1,14 +1,18 @@
 from pyrogram import filters
 from pyrogram import __version__ as pyro_vr
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-from main import *
 from pyrogram import Client
+
+from main import *
 from main import ALIVE_PIC
 from modules.help import *
+
+from prefix import my_prefix
+prefix = my_prefix()
  
 
  
-@Client.on_message(filters.command(["alive", "awake"], ["!"]) & filters.me)
+@Client.on_message(filters.command(["alive", "awake"], prefixes=prefix) & filters.me)
 async def alive(client: Client, e: Message):
     ids = 0
     try:
