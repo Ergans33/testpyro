@@ -11,7 +11,7 @@ from pyrogram.types import Message
 from pyrogram.errors import RPCError
 from pyrogram import * 
 from pyrogram.types import *
-
+from config import *
 from helpers.utility import make_carbon
 from helpers.errors import capture_err
 from helpers.basic import edit_or_reply, get_text, get_user
