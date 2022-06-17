@@ -19,6 +19,7 @@ LOG_GROUP = LOG_GROUP
 SUDO_USERS = SUDO_USERS
 DB_URL = DB_URL
 
+boottime = time.time()
 
 if not STRING_SESSION1:
     logging.error("No String Session Found! Exiting!")
