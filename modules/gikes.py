@@ -7,12 +7,16 @@ async def iter_chats(client: Client):
     """Iter Your All Chats"""
     chats = []
     async for dialog in client.iter_dialogs():
-        if dialog.chat.type in ["supergroup"]:
+        if dialog.chat.type in ["group", "supergroup"]:
             chats.append(dialog.chat.id)
     return chats
 
 @Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
 async def gbroadcast(client: Client, message: Message):
+    if message.reply_to_message:
+        text = message.reply_to_message.text
+    else:
+        text = message.text[7:]
     msg_ = await message.edit_text("`Processing..`")
     failed = 0
     if not message.reply_to_message:
