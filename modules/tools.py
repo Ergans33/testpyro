@@ -25,13 +25,31 @@ from PIL import Image, ImageDraw, ImageFont
 
 # Ping
 
-@Client.on_message(filters.command("ping", ["~", "!", "°"]) & filters.me)
-async def ping(_, message: Message):
-    start = perf_counter()
-    await message.edit("<b>Pong!</b>")
-    end = perf_counter()
-    await message.edit(f"<b>🏓 🇵 🇴 🇳 🇬 !{round(end - start, 3)}s</b>")
+async def bot_sys_stats():
+    bot_uptime = int(time.time() - boottime)
+    cpu = psutil.cpu_percent(interval=0.5)
+    mem = psutil.virtual_memory().percent
+    disk = psutil.disk_usage("/").percent
+    stats = f"""
+Uptime: {get_readable_time((bot_uptime))}
+CPU: {cpu}%
+RAM: {mem}%
+Disk: {disk}%"""
+    return stats
 
+@Client.on_message(filters.command("ping", ["~", "!", "°"]) & filters.me)
+async def ping(client: Client, message: Message):
+    start = datetime.now()
+    response = await message.reply_photo(
+        photo="",
+        caption=">> Pong!",
+    )
+    uptime = await bot_sys_stats()
+    end = datetime.now()
+    resp = (end - start).microseconds / 1000
+    await response.edit_text(
+        f"**Pong!**\n`⚡{resp} ms`\n\n<b><u>Peler Userbot System Stats:</u></b>{uptime}"
+    )
 
 # Translate
 
