@@ -2,6 +2,7 @@ import asyncio
 from pyrogram import Client , filters
 from pyrogram.types import Message
 from helpers.gban_errors import get_text, iter_chats
+from helpers.msg_types import *
 from modules.help import add_command_help
 
     
@@ -10,7 +11,9 @@ from modules.help import add_command_help
 async def gbroadcast(client: Client, message: Message):
     msg_ = await message.edit_text("`Processing..`")
     failed = 0
-    text_ = get_text(message)
+    text = message.reply_to_message.text.markdown
+        else:
+            text = ""
     if not message.reply_to_message:
         await msg_.edit("`Reply To Message Boss!`")
         return
