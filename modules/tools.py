@@ -52,7 +52,7 @@ async def ping(client: Client, message: Message):
     end = datetime.now()
     resp = (end - start).microseconds / 1000
     await response.edit_text(
-        f"**Pong!**\n`⚡{resp} ms`\n\n<b><u>Peler Userbot System Stats:</u></b>{uptime}"
+        f"<b>Peler Userbot</b>\n`**Pong!**`\n\n\n`⚡{resp} ms`\n\n"
     )
 
 # Translate
