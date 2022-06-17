@@ -3,20 +3,14 @@ import random
 from traceback import format_exc
 from typing import Tuple
 from pyrogram import Client, filters
+from pyrogram.types import Message
 from pyrogram.errors import FloodWait, MessageNotModified
 from modules.help import *
+from helpers.gban_errors import get_text, edit_or_send_as_file, get_user, iter_chats
 from helpers.SQL.gbandb import gban_info, gban_list, gban_user, ungban_user
 from helpers.SQL.gmutedb import gmute, is_gmuted, ungmute
 from helpers.SQL.rraid import zaidub_info, rzaid, runzaid
 
-
-async def iter_chats(client: Client):
-    """Iter Your All Chats"""
-    chats = []
-    async for dialog in client.iter_dialogs():
-        if dialog.chat.type in ["supergroup", "channel"]:
-            chats.append(dialog.chat.id)
-    return chats
 
 # gmute
 
