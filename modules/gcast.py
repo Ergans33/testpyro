@@ -3,7 +3,13 @@ from pyrogram import Client , filters
 from pyrogram.types import Message
 from modules.help import add_command_help
 
-
+async def iter_chats(client: Client):
+    """Iter Your All Chats"""
+    chats = []
+    async for dialog in client.iter_dialogs():
+        if dialog.chat.type in ["supergroup"]:
+            chats.append(dialog.chat.id)
+    return chats
 
 @Client.on_message(filters.me & filters.command("gcast", ["."]))
 async def gbroadcast(client: Client, message: Message):
