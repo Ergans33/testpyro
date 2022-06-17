@@ -22,6 +22,17 @@ from modules.help import *
 from PIL import Image, ImageDraw, ImageFont
 
 
+# Ping
+
+@Client.on_message(filters.command("ping", ["~", "!", "°"]) & filters.user(SUDO_USER))
+async def pingme(client: Client, message: Message):
+    start = time.time()
+    reply = await message.reply_text("...")
+    delta_ping = time.time() - start
+    await reply.edit_text(f"🎉 🇵 🇴 🇳 🇬 !\n\n♡︎ `{delta_ping * 1000:.3f}` 𝗺𝘀 ♡︎")
+
+
+
 # Translate
 
 trl = Translator()
