@@ -20,3 +20,10 @@ def get_readable_time(seconds: int) -> str:
     time_list.reverse()
     ping_time += ":".join(time_list)
     return ping_time
+
+
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(
+        int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":")))
+    )
