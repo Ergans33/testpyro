@@ -8,7 +8,7 @@ async def iter_chats(client: Client):
     """Iter Your All Chats"""
     chats = []
     async for dialog in client.iter_dialogs():
-        if dialog.chat.type in ["supergroup", "channel"]:
+        if dialog.chat.type in ["supergroup", "group"]:
             chats.append(dialog.chat.id)
     return chats
     
