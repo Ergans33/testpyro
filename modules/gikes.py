@@ -18,7 +18,7 @@ async def gbroadcast(client: Client, message: Message):
     msg_ = await message.edit_text("`Processing..`")
     failed = 0
     if not message.reply_to_message:
-        await msg_.edit_text(message)
+        await msg_.edit(message)
         await msg_.edit("`Reply To Message Boss!`")
         return
     chat_dict = await iter_chats(client)
