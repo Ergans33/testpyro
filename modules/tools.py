@@ -26,8 +26,7 @@ from main import boottime
 
 from PIL import Image, ImageDraw, ImageFont
 
-aktif = [
-    "Peler Ubot Nyala Gess🎃"
+
 # Ping
 
 async def bot_sys_stats():
