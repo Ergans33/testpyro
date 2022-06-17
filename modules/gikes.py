@@ -13,13 +13,12 @@ async def iter_chats(client: Client):
 
 @Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
 async def gbroadcast(client: Client, message: Message):
-    if message.reply_to_message:
-        text = message.reply_to_message.text
-    else:
-        text = message.text[7:]
     msg_ = await message.edit_text("`Processing..`")
     failed = 0
     if not message.reply_to_message:
+        text = message.reply_to_message.text
+    else:
+        text = message.text[7:]
         await msg_.edit("`Reply To Message Boss!`")
         return
     chat_dict = await iter_chats(client)
