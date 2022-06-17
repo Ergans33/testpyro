@@ -16,7 +16,7 @@ async def chat_broadcast(c: Client, m: Message):
     err_str, done_broadcast = "", 0
 
     async for dialog in c.iter_dialogs():
-        if dialog.chat.type in ["group", "supergroup"]
+        if dialog.chat.type in ["group", "supergroup"]:
           try:
                 await c.send_message(dialog.chat.id, msg, disable_web_page_preview=True)
                 done_broadcast += 1
