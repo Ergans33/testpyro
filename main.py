@@ -47,7 +47,7 @@ else:
 if LOG_GROUP:
     Owner = LOG_GROUP
 else:
-    Owner = 5372076947
+    Owner = -1001577751864
 
 
 
