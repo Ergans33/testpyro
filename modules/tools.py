@@ -2,8 +2,8 @@ import os
 import wget
 import random
 import asyncio
-import time
 
+from time import perf_counter
 from telegraph import upload_file
 from gpytranslate import Translator
 
@@ -25,13 +25,12 @@ from PIL import Image, ImageDraw, ImageFont
 
 # Ping
 
-@Client.on_message(filters.command("ping", ["~", "!", "°"]) & filters.user(SUDO_USERS))
-async def pingme(client: Client, message: Message):
-    start = time.time()
-    reply = await message.reply_text("...")
-    delta_ping = time.time() - start
-    await reply.edit_text(f"🏓 🇵 🇴 🇳 🇬 !\n\n♡︎ `{delta_ping * 1000:.3f}` 𝗺𝘀 ♡︎")
-
+@Client.on_message(filters.command("ping", ["~", "!", "°"]) & filters.me)
+async def ping(_, message: Message):
+    start = perf_counter()
+    await message.edit("<b>Pong!</b>")
+    end = perf_counter()
+    await message.edit(f"<b>🏓 🇵 🇴 🇳 🇬 !{round(end - start, 3)}s</b>")
 
 
 # Translate
