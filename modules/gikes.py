@@ -14,9 +14,9 @@ async def iter_chats(client: Client):
 @Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
 async def gbroadcast(client: Client, message: Message):
     if message.reply_to_message:
-        msg_ = message.reply_to_message.text.markdown
+        msg = message.reply_to_message.text.markdown
     else:   
-        await msg_.reply_text("`Processing..`")
+        msg_ = await message.reply_text("`Processing..`")
         failed = 0
     if not message.reply_to_message:
         await msg_.reply_text("Berikan Pesan atau Reply Message Boss!")
