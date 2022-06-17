@@ -2,6 +2,7 @@ import os
 import wget
 import random
 import asyncio
+import time
 
 from telegraph import upload_file
 from gpytranslate import Translator
