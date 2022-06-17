@@ -4,26 +4,37 @@ from pyrogram.types import Message
 from modules.help import add_command_help
 
 
-@Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
-async def chat_broadcast(c: Client, m: Message):
-    if m.reply_to_message:
-        msg = m.reply_to_message.text.markdown
-    else:
-        await m.reply_text("Berikan Pesan atau Reply Message Boss")
-        return
+async def iter_chats(client: Client):
+    """Iter Your All Chats"""
+    chats = []
+    async for dialog in client.iter_dialogs():
+        if dialog.chat.type in ["supergroup", "channel"]:
+            chats.append(dialog.chat.id)
+    return chats
     
-    exmsg = await m.reply_text("Started broadcasting!")
-    err_str, done_broadcast = "", 0
-
-    async for dialog in c.iter_dialogs():
-        if dialog.chat.type in ["group", "supergroup"]:
-          try:
-                await c.send_message(dialog.chat.id, msg, disable_web_page_preview=True)
-                done_broadcast += 1
-                await asyncio.sleep(0.1)
-          except Exception as e:
-            await m.reply_text(f"Message Sucessfully Send To {dialog.chat.id} Chats! Failed In {e} Chat")
-
+    
+@Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
+async def gbroadcast(client: Client, message: Message):
+    msg_ = await message.edit_text("`Processing..`")
+    failed = 0
+    if not message.reply_to_message:
+        await msg_.edit("{message.text}")
+        await msg_.edit("`Reply To Message Boss!`")
+        return
+    chat_dict = await iter_chats(client)
+    chat_len = len(chat_dict)
+    await msg_.edit("`Now Sending To All Chats Possible!`")
+    if not chat_dict:
+        msg_.edit("`You Have No Chats! So Sad`")
+        return
+    for c in chat_dict:
+        try:
+            msg = await message.reply_to_message.copy(c)
+        except:
+            failed += 1
+    await msg_.edit(
+        f"`Message Sucessfully Send To {chat_len-failed} Chats! Failed In {failed} Chats.`"
+    )
 
 
 add_command_help(
