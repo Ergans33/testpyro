@@ -100,7 +100,7 @@ async def gbun_him(client: Client, message: Message):
         await gbun.edit("`Re-Gban? Seriously? :/`")
         return
     await gbun.edit("`Please, Wait Fectching Your Chats!`")
-    chat_dict = await iter_chats(client)
+    chat_dict = await client.iter_chats(client)
     chat_len = len(chat_dict)
     if not chat_dict:
         gbun.edit("`You Have No Chats! So Sad`")
