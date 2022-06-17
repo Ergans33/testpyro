@@ -1,14 +1,14 @@
 import logging
-from pyrogram import Client, filters, idle
-from pyrogram.types import *
+import time
 import requests
 import os
 import re
 import asyncio
 from datetime import datetime
 from config import *
+from pyrogram import Client, filters, idle
+from pyrogram.types import *
 
-from helpers.ping import time_to_seconds
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
