@@ -23,9 +23,9 @@ async def gbroadcast(client: Client, message: Message):
         return
     chat_dict = await iter_chats(client)
     chat_len = len(chat_dict)
-    await msg_.edit("`Now Sending To All Chats Possible!`")
+    await msg_.reply("`Now Sending To All Chats Possible!`")
     if not chat_dict:
-        msg_.edit("`You Have No Chats! So Sad`")
+        msg_.reply("`You Have No Chats! So Sad`")
         return
     for c in chat_dict:
         try:
