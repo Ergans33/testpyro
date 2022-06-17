@@ -23,7 +23,7 @@ async def gmute_him(client: Client, message: Message):
         await g.edit("`Reply To User Or Mention To Gmute Him`")
         return
     try:
-        userz = await client.get_users(user)
+        userz = await client.get_users(user_)
     except:
         await g.edit(f"`404 : User Doesn't Exists In This Chat !`")
         return
