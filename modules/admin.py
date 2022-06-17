@@ -50,7 +50,7 @@ async def promotte(client: Client, message: Message):
                     await client.promote_chat_member(
                         message.chat.id,
                         user_id,
-                        
+                        custom_title="sigoblok"
                         can_change_info=True,
                         can_delete_messages=True,
                         can_restrict_members=True,
@@ -129,7 +129,7 @@ async def demote(client: Client, message: Message):
              message.chat.id,
              user_id,
             is_anonymous=False,
-            
+            custom_title=None,
             can_change_info=False,
             can_post_messages=False,
             can_edit_messages=False,
