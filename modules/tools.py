@@ -2,8 +2,9 @@ import os
 import wget
 import random
 import asyncio
+import psutil
 
-from time import perf_counter
+from datetime import datetime
 from telegraph import upload_file
 from gpytranslate import Translator
 
@@ -13,6 +14,7 @@ from pyrogram.errors import RPCError
 from pyrogram import * 
 from pyrogram.types import *
 from config import *
+from helpers.ping import get_readable_time
 from helpers.utility import make_carbon
 from helpers.errors import capture_err
 from helpers.basic import edit_or_reply, get_text, get_user
