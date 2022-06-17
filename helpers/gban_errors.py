@@ -1,5 +1,7 @@
 from pyrogram import Client
 from pyrogram.types import Message
+from pyrogram.errors import FloodWait, MessageNotModified
+
 
 
 async def iter_chats(client: Client):
