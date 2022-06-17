@@ -14,7 +14,8 @@ async def iter_chats(client: Client):
 
 @Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
 async def gbroadcast(client: Client, message: Message):
-    msg_ = await message.edit_text("`Processing..`")
+    cht = await message.edit_text("`Processing..`")
+        msg_ = cht
     failed = 0
     if not message.reply_to_message:
         await msg_.edit("`Reply To Message Boss!`")
