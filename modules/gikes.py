@@ -13,10 +13,13 @@ async def iter_chats(client: Client):
 
 @Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
 async def gbroadcast(client: Client, message: Message):
-    msg_ = await message.edit_text("`Processing..`")
-    failed = 0
+    if message.reply_to_message:
+        msg = message.reply_to_message.text.markdown
+    else:   
+        msg_ = await message.reply_text("`Processing..`")
+        failed = 0
     if not message.reply_to_message:
-        await msg_.edit_text("Berikan Pesan atau Reply Message Boss!")
+        await msg_.reply_text("Berikan Pesan atau Reply Message Boss!")
         return
     chat_dict = await iter_chats(client)
     chat_len = len(chat_dict)
