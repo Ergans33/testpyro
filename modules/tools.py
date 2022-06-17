@@ -3,6 +3,7 @@ import wget
 import random
 import asyncio
 import psutil
+import time
 
 from datetime import datetime
 from telegraph import upload_file
