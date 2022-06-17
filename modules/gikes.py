@@ -9,8 +9,9 @@ from modules.help import add_command_help
     
 @Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
 async def gbroadcast(client: Client, message: Message):
-    msg_ = await message.edit_text("`Processing..`")
-    failed = 0
+    if message.reply_to_message.text:
+        msg_ = await message.edit_text("`Processing..`")
+        failed = 0
     text = message.reply_to_message.text.markdown
         else:
             text = ""
