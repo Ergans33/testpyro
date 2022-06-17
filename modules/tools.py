@@ -22,6 +22,7 @@ from helpers.basic import edit_or_reply, get_text, get_user
 from helpers.parser import mention_html, mention_markdown
 
 from modules.help import *
+from . import bottime
 
 from PIL import Image, ImageDraw, ImageFont
 
