@@ -8,6 +8,7 @@ import asyncio
 from datetime import datetime
 from config import *
 
+from helpers.ping import time_to_seconds
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s',
