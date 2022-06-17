@@ -50,7 +50,6 @@ async def promotte(client: Client, message: Message):
                     await client.promote_chat_member(
                         message.chat.id,
                         user_id,
-                        status=True,
                         custom_title="sigoblok",
                         can_change_info=True,
                         can_delete_messages=True,
