@@ -17,11 +17,7 @@ async def gbroadcast(client: Client, message: Message):
         return await message.reply_text("Input text or Reply to a message")
     msg_ = await message.reply_text("`Processing..`")
     failed =0
-    chat_dict = await iter_chats(client)
-    chat_len = len(chat_dict)
-    
-    for c in chat_dict:
-        try:
+async for dialog in client.iter_dialogs():
             await client.send_message(msg)
         except:
             failed += 1
