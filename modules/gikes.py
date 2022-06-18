@@ -15,7 +15,7 @@ async def gbroadcast(client: Client, message: Message):
         msgg = message.reply_to_message()
     else:
         return await message.reply_text("Input text or Reply to a message")
-    kk = await message.reply_text("`Processing..`")
+    kk = await message.edit_or_reply("`Processing..`")
     failed =0
     done =0
     async for dialog in client.iter_dialogs():
@@ -24,7 +24,7 @@ async def gbroadcast(client: Client, message: Message):
             done += 1
         except:
             failed += 1
-    await msg_.edit(
+    await kk.edit(
         f"`Message Sucessfully Send To {done} Chats! Failed In {failed} Chats.`"
     )
     
