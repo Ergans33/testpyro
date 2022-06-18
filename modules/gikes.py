@@ -1,5 +1,5 @@
 import asyncio
-from pyrogran import FloodWait
+from pyrogram import FloodWait
 from pyrogram import Client , filters
 from pyrogram.types import Message
 from helpers.gban_errors import iter_chats
