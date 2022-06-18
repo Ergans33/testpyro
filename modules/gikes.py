@@ -19,10 +19,6 @@ async def gbroadcast(client: Client, message: Message):
     failed =0
     done =0
     async for x in client.iter_dialogs():
-        if x.is_group:
-            chat = x.id
-            if chat not in GCAST_BLACKLIST:
-                try:
                     await client.send_message(chat, msg)
                     await asyncio.sleep(0.1)
                     done += 1
