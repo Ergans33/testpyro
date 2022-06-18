@@ -19,15 +19,15 @@ async def gbroadcast(client: Client, message: Message):
     failed =0
     done =0
     async for dialog in client.iter_dialogs():
-        await client.send_message(chat, msg)
-        await asyncio.sleep(0.1)
-        done += 1
-    except FloodWait as kntl:
-        await asyncio.sleep(int(kntl.seconds))
-        await client.send_message(chat, msg)
-        done += 1
-    except BaseException:
-        failed += 1
+            await client.send_message(chat, msg)
+            await asyncio.sleep(0.1)
+            done += 1
+        except FloodWait as kntl:
+            await asyncio.sleep(int(kntl.seconds))
+            await client.send_message(chat, msg)
+            done += 1
+        except BaseException:
+            failed += 1
     await msg_.edit(
         f"`Message Sucessfully Send To {done} Chats! Failed In {failed} Chats.`"
     )
