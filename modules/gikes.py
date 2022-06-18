@@ -31,7 +31,7 @@ async def gbroadcast(client: Client, message: Message):
                     await client.send_message(chat, msg)
                     done += 1
                 except BaseException:
-            failed += 1
+                    failed += 1
     await msg_.edit(
         f"`Message Sucessfully Send To {done} Chats! Failed In {failed} Chats.`"
     )
