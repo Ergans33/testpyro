@@ -18,13 +18,10 @@ async def gbroadcast(client: Client, message: Message):
     msg_ = await message.reply_text("`Processing..`")
     failed =0
     async for dialog in client.iter_dialogs():
-        if dialog.is_group:
-            chat = dialog.id
-            if chat not in GCAST_BLACKLIST:
-                try:
-                    await client.send_message(chat, msg)
-                except:
-                    failed += 1
+        try:
+            await client.send_message(chat, msg)
+        except:
+            failed += 1
     await msg_.edit(
         f"`Message Sucessfully Send To {chat_len-failed} Chats! Failed In {failed} Chats.`"
     )
