@@ -12,7 +12,7 @@ async def gbroadcast(client: Client, message: Message):
     if text_ := get_text(message):
         msgg = text_
     elif message.reply_to_message:
-        msgg = message.reply_to_message
+        msgg = message.reply_to_message()
     else:
         return await message.reply_text("Input text or Reply to a message")
     kk = await message.reply_text("`Processing..`")
