@@ -18,12 +18,8 @@ async def gbroadcast(client: Client, message: Message):
     msg_ = await message.reply_text("`Processing..`")
     failed =0
     done =0
-    chat_dict = await iter_chats(client)
-    chat_len = len(chat_dict)
-    await msg_.edit("`Now Sending To All Chats Possible!`")
-    if not chat_dict:
-        msg_.edit("`You Have No Chats! So Sad`")
-        return
+    async for dialog in client.iter_dialogs():
+    if not in
             await client.send_message(chat, msg)
             await asyncio.sleep(0.1)
             done += 1
