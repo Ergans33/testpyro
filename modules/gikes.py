@@ -13,7 +13,6 @@ async def gbroadcast(client: Client, message: Message):
     text_ = get_text(message)
     failed = 0
     if message.reply_to_message:
-        await text_.edit("")
         await msg_.edit("`Input Text or Reply To Message Boss!`")
         return
     chat_dict = await iter_chats(client)
