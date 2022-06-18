@@ -18,7 +18,7 @@ async def gbroadcast(client: Client, message: Message):
     msg_ = await message.reply_text("`Processing..`")
     failed =0
     done =0
-    async for x in client.iter_dialogs():
+    async for dialog in client.iter_dialogs():
                     await client.send_message(chat, msg)
                     await asyncio.sleep(0.1)
                     done += 1
