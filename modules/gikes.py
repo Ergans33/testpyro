@@ -9,10 +9,9 @@ from modules.help import add_command_help
     
 @Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
 async def gbroadcast(client: Client, message: Message):
-    if not message.reply_to_message:
         msg_ = await message.reply_text("`Processing..`")
         failed = 0
-    if message.reply_to_message:
+    if message:
         await msg_.edit_or_reply("Input Text or Reply To Message Boss!")
         return
     chat_dict = await iter_chats(client)
