@@ -18,8 +18,9 @@ async def gbroadcast(client: Client, message: Message):
     msg_ = await message.reply_text("`Processing..`")
     failed = 0
     done = 0
-    async for x in client.inter.dialogs()
-        if chat = x.id
+    async for x in client.inter.dialogs():
+        if x.is_group:
+            chat = x.id
             if chat not in GCAST_BLACKLIST
                 try:
                     await client.send_message(chat, msg)
