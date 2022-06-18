@@ -15,7 +15,7 @@ async def gbroadcast(client: Client, message: Message):
         msgg = message.reply_to_message
     else:
         return await message.reply_text("Input text or Reply to a message")
-    msg_ = await message.reply_text("`Processing..`")
+    kk = await message.reply_text("`Processing..`")
     failed =0
     done =0
     async for dialog in client.iter_dialogs():
