@@ -2,18 +2,18 @@ import asyncio
 from pyrogram import Client , filters
 from pyrogram.types import Message
 from helpers.gban_errors import iter_chats
-from helpers.basic import edit_or_reply
+from helpers.basic import get_text
 from modules.help import add_command_help
 
     
     
 @Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
 async def gbroadcast(client: Client, message: Message):
-    xx = await message.reply_text("`Processing..`")
-    msg_ = xx
+    msg_ = await message.reply_text("`Processing..`")
+    text_ = get_texr(message)
     failed = 0
     if message.reply_to_message:
-        await msg_.edit_or_reply(message, "Input Text or Reply To Message Boss!")
+        await msg_.edit("`Input Text or Reply To Message Boss!`")
         return
     chat_dict = await iter_chats(client)
     chat_len = len(chat_dict)
