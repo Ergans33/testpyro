@@ -19,13 +19,12 @@ async def gbroadcast(client: Client, message: Message):
     failed =0
     chat_dict = await iter_chats(client)
     chat_len = len(chat_dict)
-    await msg_.edit("`Now Sending To All Chats Possible!`")
-    if not chat_dict:
+    if chat_dict:
         msg_.edit("`You Have No Chats! So Sad`")
         return
     for c in chat_dict:
         try:
-            await client.send_message(msg)
+            msgg = await message.reply_to_message.copy(c)
         except:
             failed += 1
     await msg_.edit(
