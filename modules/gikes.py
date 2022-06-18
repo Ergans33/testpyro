@@ -25,7 +25,7 @@ async def gbroadcast(client: Client, message: Message):
         return
     for c in chat_dict:
         try:
-            msg = await message.reply_to_message.copy(c)
+            await client.send_message(msg)
         except:
             failed += 1
     await msg_.edit(
