@@ -19,7 +19,7 @@ async def gbroadcast(client: Client, message: Message):
     failed =0
     async for dialog in client.iter_dialogs():
         try:
-            await client.send_message(chat, msg)
+            await client.send_message(msg)
         except:
             failed += 1
     await msg_.edit(
