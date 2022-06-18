@@ -16,8 +16,8 @@ async def gbroadcast(client: Client, message: Message):
     else:
         return await message.reply_text("Input text or Reply to a message")
     msg_ = await message.reply_text("`Processing..`")
-    failed = 0
-    done = 0
+    failed =0
+    done =0
     async for x in client.inter.dialogs():
         if x.is_group:
             chat = x.id
@@ -26,7 +26,7 @@ async def gbroadcast(client: Client, message: Message):
                     await client.send_message(chat, msg)
                     await asyncio.sleep(0.1)
                     done += 1
-                except FloodWait as kntl
+                except FloodWait as kntl:
                     await asyncio.sleep(int(kntl.seconds))
                     await client.send_message(chat, msg)
                     done += 1
