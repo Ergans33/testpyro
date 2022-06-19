@@ -14,22 +14,26 @@ async def gbroadcast(client: Client, message: Message):
     elif message.reply_to_message:
         msgg = message.reply_to_message()
     else:
-        return await message.reply_text("Input text or Reply to a message")
-    kk = await message.edit_or_reply("`Processing..`")
+        return await message.edit("`Input text or Reply to a message`")
+    msg_ = await message.edit_text("`Processing..`")
     failed =0
-    done =0
-    async for dialog in client.iter_dialogs():
+    chat_dict = await iter_chats(client)
+    chat_len = len(chat_dict)
+    if not chat_dict:
+        msg_.edit("`You Have No Chats!`")
+        return
+    for c in chat_dict:
         try:
-            await client.send_message(dialog.chat.id)
-            done += 1
+            msg = text_ or await message.reply_to_message.copy(c)
         except:
             failed += 1
-    await kk.edit(
-        f"`Message Sucessfully Send To {done} Chats! Failed In {failed} Chats.`"
+    await msg_.edit(
+        f"`Message Sucessfully Send To {chat_len-failed} Chats! Failed In {failed} Chats.`"
     )
+
+
+
     
-
-
 add_command_help(
     "gikes",
     [
