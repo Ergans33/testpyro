@@ -11,11 +11,11 @@ from modules.help import add_command_help
 async def gbroadcast(client: Client, message: Message):
     text_ = get_text(message)
     if not text_:
-            return await message.edit("`Input text or Reply to a message`")
-        if not message.reply_to_message:
-            return await message.edit("`Input text or Reply to a message`")
-        if not message.reply_to_message.text:
-            return await message.edit("`Input text or Reply to a message`")
+        return await message.edit("`Input text or Reply to a message`")
+    if not message.reply_to_message:
+        return await message.edit("`Input text or Reply to a message`")
+    if not message.reply_to_message.text:
+        return await message.edit("`Input text or Reply to a message`")
     msg_ = await message.edit_text("`Processing..`")
     failed =0
     chat_dict = await iter_chats(client)
