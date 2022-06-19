@@ -40,11 +40,11 @@ async def gmute_him(client: Client, message: Message):
     user_ = get_user(message, text_)[0]
     if not user_:
         return await ug.edit("`Reply To User Or Mention To Un-Gmute Him`")
+    ug = await message.edit_text("`Processing..`")
         try:
             userz = await client.get_users(user_)
         except:
             return await ug.edit(f"`404 : User Doesn't Exists In This Chat !`")
-    ug = await message.edit_text("`Processing..`")
     mee= await client.get_me()
     if userz.id == mee.id:
         await ug.edit("`Are ya kidding with me`")
