@@ -36,19 +36,17 @@ async def gmute_him(c: Client, m: Message):
 
 @Client.on_message(filters.me & filters.command("ungmute", ["~", "!", "°"]))
 async def gmute_him(client: Client, message: Message):
-    if text_ := get_text(message):
-        msg = text_
-        user_ = get_user(message, text_)[0]
+    text_ = get_text(message)
+    user_ = get_user(message, text_)[0]
     if not user_:
         return await ug.edit("`Reply To User Or Mention To Un-Gmute Him`")
+        try:
+            userz = await client.get_users(user_)
+        except:
+            return await ug.edit(f"`404 : User Doesn't Exists In This Chat !`")
     ug = await message.edit_text("`Processing..`")
-    try:
-        userz = await client.get_user(user_)
-    except:
-        await ug.edit(f"`404 : User Doesn't Exists In This Chat !`")
-        return
     mee= await client.get_me()
-    if userz.id != mee.id:
+    if userz.id == mee.id:
         await ug.edit("`Are ya kidding with me`")
         return
     if not await is_gmuted(userz.id):
