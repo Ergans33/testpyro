@@ -20,12 +20,13 @@ async def gbroadcast(client: Client, message: Message):
     err =0
     
     async for dialog in client.iter_dialogs():
-        try:
-            await client.send_message(msg, disable_web_page_preview=True)
-            done += 1
-            await asyncio.sleep(0.1)
-        except Exception:
-            err += 1
+        if dialog.chat.type in ["supergroup", "group"]:
+            try:
+                await client.send_message(msg, disable_web_page_preview=True)
+                done += 1
+                await asyncio.sleep(0.1)
+            except Exception:
+                err += 1
     await msg_.reply_text(
         f"`Message Sucessfully Send To {done} Chats! Failed In {err} Chats.`"
     )
