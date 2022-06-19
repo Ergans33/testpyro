@@ -24,13 +24,13 @@ async def gmute_him(client: Client, message: Message):
         await message.edit("`Berhasil Membisukan Pengguna!`")
         if is_gmuted(user.id) is False:
             await message.edit("`Kesalahan! Pengguna Sudah Dibisukan.`")
-    else:
-        if reason:
-            await message.edit(f"**Dibisukan Secara Global!**\n**Alasan:** `{reason}`")
         else:
-            await message.edit("`Berhasil Membisukan Pengguna Secara Global!`")
-        try:
-            await client.send_message:
+             if reason:
+                await message.edit(f"**Dibisukan Secara Global!**\n**Alasan:** `{reason}`")
+             else:
+                await message.edit("`Berhasil Membisukan Pengguna Secara Global!`")
+             try:
+                await client.send_message:
                 "#GLOBALMUTE\n"
                 f"PENGGUNA: [{user.first_name}](tg://user?id={user.id})\n"
                 f"GRUP: {gspdr.chat.title}(`{gspdr.chat_id}`)",
