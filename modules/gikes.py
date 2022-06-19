@@ -11,6 +11,7 @@ from modules.help import add_command_help
 async def gbroadcast(client: Client, message: Message):
     text_ = get_text(message)
     if not text_:
+            return await message.edit("`Input text or Reply to a message`")
         if not message.reply_to_message:
             return await message.edit("`Input text or Reply to a message`")
         if not message.reply_to_message.text:
@@ -24,7 +25,7 @@ async def gbroadcast(client: Client, message: Message):
         return
     for c in chat_dict:
         try:
-            msg = await text_ or await message.reply_to_message.copy(c)
+            msg = await text_ or message.reply_to_message.copy(c)
         except:
             failed += 1
     await msg_.edit(
