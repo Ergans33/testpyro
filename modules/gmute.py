@@ -16,7 +16,7 @@ async def gmute_him(client: Client, message: Message):
         try:
             if message.reply_to_message:
                 me_ = message.reply_to_message.from_user.id
-            return await message.edit("`You Don't Have Permission! To mute`")
+                return await message.edit("`You Don't Have Permission! To mute`")
 
     
 
