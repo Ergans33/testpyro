@@ -18,9 +18,11 @@ async def gmute_him(client: Client, message: Message):
                 me_ = message.reply_to_message.from_user.id
             await message.edit("`You Don't Have Permission! To mute`")
             return
-        userz = await client.get_users(user)
+        userz, reason = await get_user_from_client(user)
         if not userz:
             return
+        await message.edit("`Berhasil Membisukan Pengguna!`")
+        if is_gmuted(user.id):
         
 
     
