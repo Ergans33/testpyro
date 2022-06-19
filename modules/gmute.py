@@ -9,22 +9,20 @@ from modules.help import add_command_help
 
 
 @Client.on_message(filters.me & filters.command("gmute", ["~", "!", "°"]))
-async def gmute_him(client: Client, message: Message):
-    if text_ := get_text(message):
-        msg = text_
-        user, reason = get_user(message, text_)
+async def gmute_him(c: Client, m: Message):
+    text_ = get_text(message)
+    user, reason = get_user(message, text_)
     if not user:
         return await g.edit("`Reply To User Or Mention To Gmute Him`")
     g = await message.edit_text("`Processing..`")
-    try:
-        userz = await client.get_user(user)
-    except:
-        await g.edit(f"`404 : User Doesn't Exists In This Chat !`")
-        return
+        try:
+            userz = await client.get_users(user)
+        except:
+            return await g.edit(f"`404 : User Doesn't Exists In This Chat !`")
     if not reason:
         reason = "Just_Gmutted!"
     mee= await client.get_me()
-    if userz.id != mee.id:
+    if userz.id == mee.id:
         await g.edit("`Are you kidding with ne`")
         return
     if await is_gmuted(userz.id):
