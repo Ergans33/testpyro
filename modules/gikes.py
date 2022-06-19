@@ -18,7 +18,7 @@ async def gbroadcast(client: Client, message: Message):
     msg_ = await message.edit_text("`Processing..`")
     err_str, done_gbroadcast = "", 0
     
-    if dialog in client.iter_dialog
+    if dialog in client.iter_dialog():
         try:
             await client.send_message(dialog.chat.id, msg, disable_web_page_preview=True)
             failed += 1
