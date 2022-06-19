@@ -19,7 +19,7 @@ async def gbroadcast(client: Client, message: Message):
     done =0
     err =0
     
-    if dialog in client.iter_dialog():
+    if dialog in client.iter_dialogs():
         try:
             await client.send_message(dialog.chat.id, msg, disable_web_page_preview=True)
             failed += 1
