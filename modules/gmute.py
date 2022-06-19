@@ -9,7 +9,7 @@ from modules.help import add_command_help
 
 
 @Client.on_message(filters.me & filters.command("gmute", ["~", "!", "°"]))
-async def gmute_him(c: Client, m: Message):
+async def gmute_him(client: Client, message: Message):
     text_ = get_text(message)
     user, reason = get_user(message, text_)
     if not user:
