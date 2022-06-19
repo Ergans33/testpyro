@@ -11,7 +11,8 @@ from modules.help import add_command_help
 @Client.on_message(filters.me & filters.command("gmute", ["~", "!", "°"]))
 async def gmute_him(client: Client, message: Message):
     if text_ := get_text(message)
-    user, reason = get_user(message, text_)
+        msg = text_
+        user, reason = get_user(message, text_)
     if not user:
         return await g.edit("`Reply To User Or Mention To Gmute Him`")
     g = await message.edit_text("`Processing..`")
@@ -37,8 +38,9 @@ async def gmute_him(client: Client, message: Message):
 
 @Client.on_message(filters.me & filters.command("ungmute", ["~", "!", "°"]))
 async def gmute_him(client: Client, message: Message):
-    if text_ := get_text(message)
-    user_ = get_user(message, text_)[0]
+    if text_ := get_text(message):
+        msg = text_
+        user_ = get_user(message, text_)[0]
     if not user_:
         return await ug.edit("`Reply To User Or Mention To Un-Gmute Him`")
     ug = await message.edit_text("`Processing..`")
