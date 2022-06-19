@@ -14,18 +14,20 @@ async def gbroadcast(client: Client, message: Message):
     elif message.reply_to_message:
         msg = message.reply_to_message.text
     else:
-        return await message.edit("`Input text or Reply to a message`")
-    msg_ = await message.edit_text("`Processing..`")
-    err_str, done_gbroadcast = "", 0
+        return await message.reply_text("`Input text or Reply to a message`")
+    msg_ = await message.reply_text("`Processing..`")
+    done =0
+    err =0
     
     if dialog in client.iter_dialog():
         try:
             await client.send_message(dialog.chat.id, msg, disable_web_page_preview=True)
             failed += 1
             await asyncio.sleep(0.1)
-        except Exception as e:
-    await msg_.edit(
-        f"`Message Sucessfully Send To {done_gbroadcast} Chats! Failed In {e} Chats.`"
+        except Exception:
+            err += 1
+    await msg_.reply_text(
+        f"`Message Sucessfully Send To {done} Chats! Failed In {err} Chats.`"
     )
 
 
