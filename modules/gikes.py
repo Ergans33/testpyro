@@ -22,7 +22,7 @@ async def gbroadcast(client: Client, message: Message):
     async for dialog in client.iter_dialogs():
         try:
             await client.send_message(msg, disable_web_page_preview=True)
-            failed += 1
+            done += 1
             await asyncio.sleep(0.1)
         except Exception:
             err += 1
