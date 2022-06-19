@@ -13,7 +13,7 @@ async def gbroadcast(client: Client, message: Message):
     if not text_:
         if not message.reply_to_message:
             return await message.edit("`Input text or Reply to a message`")
-        if not message.reply_to_message.text
+        if not message.reply_to_message.text:
             return await message.edit("`Input text or Reply to a message`")
     msg_ = await message.edit_text("`Processing..`")
     failed =0
