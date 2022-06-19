@@ -6,31 +6,27 @@ from helpers.gban_errors import iter_chats
 from helpers.basic import get_text
 from modules.help import add_command_help
 
- 
+
 @Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
 async def gbroadcast(client: Client, message: Message):
-    text_ = get_text(message)
-    if not text_:
-        if not message.reply_to_message:
-            return await message.edit("`Input text or Reply to a message`")
-        if not message.reply_to_message.text:
-            return await message.edit("`Input text or Reply to a message`")
+    if text_ := get_text(message):
+        msg = text_
+    elif message.reply_to_message:
+        msg = message.reply_to_message.text
+    else:
+        return await message.edit("`Input text or Reply to a message`")
     msg_ = await message.edit_text("`Processing..`")
-    failed =0
-    chat_dict = await iter_chats(client)
-    chat_len = len(chat_dict)
-    if not chat_dict:
-        msg_.edit("`You Have No Chats!`")
-        return
-    for c in chat_dict:
+    err_str, done_gbroadcast = "", 0
+    
+    if dialog in client.iter_dialog
         try:
-            msg = await text_ or message.reply_to_message.copy(c)
-        except:
+            await client.send_message(dialog.chat.id, msg, disable_web_page_preview=True)
             failed += 1
+            await asyncio.sleep(0.1)
+        except Exception as e:
     await msg_.edit(
-        f"`Message Sucessfully Send To {chat_len-failed} Chats! Failed In {failed} Chats.`"
+        f"`Message Sucessfully Send To {done_gbroadcast} Chats! Failed In {e} Chats.`"
     )
-
 
 
     
