@@ -10,9 +10,9 @@ from modules.help import add_command_help
 @Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
 async def gbroadcast(client: Client, message: Message):
     if text_ := get_text(message):
-        msgg = text_
+        msg = text_
     elif message.reply_to_message:
-        msgg = message.reply_to_message()
+        msg = message.reply_to_message()
     else:
         return await message.edit("`Input text or Reply to a message`")
     msg_ = await message.edit_text("`Processing..`")
