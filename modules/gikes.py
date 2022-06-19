@@ -9,8 +9,7 @@ from modules.help import add_command_help
  
 @Client.on_message(filters.me & filters.command("gikes", ["~", "!", "°"]))
 async def gbroadcast(client: Client, message: Message):
-    if text_ = get_text(message):
-        msg = text_
+    if text_ = get_text(message)
     elif message.reply_to_message:
         msg = message.reply_to_message.text
     else:
