@@ -1,11 +1,7 @@
 from helpers.SQL import dbb
-
-try:
-    from helpers.SQL import SESSION, BASE
-except ImportError:
-    raise AttributeError
-
 from sqlalchemy import Column, String
+from helpers.SQL import SESSION, BASE
+
 
 
 class GMute(BASE):
