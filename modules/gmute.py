@@ -15,7 +15,7 @@ async def start_gmute(client: Client , message: Message):
     if message.chat.type in ["group", "supergroup"]:
         await message.edit_text("`Putting duct tape...`")
         user_id, user_first_name = await extract_user(message)
-    if is_gmuted(user_id):
+    if not is_gmuted(user_id):
         await message.edit_text("`This user is already gmuted!`")
         return
     try:
@@ -72,7 +72,7 @@ async def list_gmuted(client: Client, message: Message):
 @Client.on_message(filters.group, group=5)
 async def watcher_gmute(client: Client, message: Message):
     try:
-        if is_gmuted(message.from_user.id):
+        if not is_gmuted(message.from_user.id):
             await asyncio.sleep(0.1)
             await client.delete_messages(chat_id=message.chat.id, message_ids=message.message_id)
     except AttributeError:
