@@ -15,5 +15,9 @@ def start() -> scoped_session:
 
 
 SESSION = start()
-mongodb = AsyncIOMotorClient(MONGO_DB)
-dbb = mongodb["SPAMBOT"]
+
+if not MONGO_DB:
+    mongodb = AsyncIOMotorClient(MONGO_DB)
+    db = mongodb["SPAMBOT"]
+else:
+    db = SqliteDatabase(DB_URL)
