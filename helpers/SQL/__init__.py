@@ -13,8 +13,9 @@ def start() -> scoped_session:
     BASE.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
-
-SESSION = start()
+try:
+    BASE = declarative_base()
+    SESSION = start()
 
 if not MONGO_DB:
     mongodb = AsyncIOMotorClient(MONGO_DB)
