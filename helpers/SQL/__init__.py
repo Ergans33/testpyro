@@ -13,14 +13,7 @@ def start() -> scoped_session:
     BASE.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=False))
 
-try:
-    BASE = declarative_base()
-    SESSION = start()
-except AttributeError as e:
-    print(
-        "DB_URL is not configured. Features depending on the database might have issues."
-    )
-    print(str(e))
+SESSION = start()
 
 
 if not MONGO_DB:
