@@ -26,7 +26,7 @@ async def start_gmute(client: Client , message: Message):
         await message.edit_text(f"<b>Error:</b>\n\n{str(e)}")
     else:
         await message.edit_text("`Successfully gmuted that person`")
-        await cient.send_message(
+        await client.send_message(
             "#GMUTE\nUser: {} in Chat {}".format(
                 mention_markdown(user_first_name, user_id), message.chat.title
             ),
