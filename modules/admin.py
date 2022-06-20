@@ -2,7 +2,7 @@ import asyncio
 import time
 from emoji import get_emoji_regexp
 
-from helpers.PyroHelpers import GetUserMentionable
+from helpers.pyrohelpers import GetUserMentionable
 from helpers.adminHelpers import CheckAdmin, CheckReplyAdmin, RestrictFailed
 
 from pyrogram.errors import UserAdminInvalid
