@@ -15,9 +15,11 @@ async def start_gmute(client: Client , message: Message):
     if message.chat.type in ["group", "supergroup"]:
         await message.edit_text("`Putting duct tape...`")
         user_id, user_first_name = await extract_user(message)
-    if not is_gmuted(user_id):
-        await message.edit_text("`This user is already gmuted!`")
-        return
+    if gmt := is_gmuted(user_id):
+        msg = gmt
+    elif message.reply_to_message:
+        msg = message.reply_to_message.text
+        return await message.edit_text("`This user is already gmuted!`")
     try:
         gmute(user_id)
     except Exception as e:
